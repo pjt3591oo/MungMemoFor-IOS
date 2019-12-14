@@ -9,23 +9,23 @@
 /* Begin PBXBuildFile section */
 		B184BDEB23A4974100D7282E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B184BDEA23A4974100D7282E /* AppDelegate.swift */; };
 		B184BDED23A4974100D7282E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B184BDEC23A4974100D7282E /* SceneDelegate.swift */; };
-		B184BDEF23A4974100D7282E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B184BDEE23A4974100D7282E /* ViewController.swift */; };
 		B184BDF223A4974100D7282E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B184BDF023A4974100D7282E /* Main.storyboard */; };
 		B184BDF523A4974100D7282E /* MungMEmo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B184BDF323A4974100D7282E /* MungMEmo.xcdatamodeld */; };
 		B184BDF723A4974200D7282E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B184BDF623A4974200D7282E /* Assets.xcassets */; };
 		B184BDFA23A4974200D7282E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B184BDF823A4974200D7282E /* LaunchScreen.storyboard */; };
+		B184BE0323A4B73500D7282E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B184BE0223A4B73500D7282E /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B184BDE723A4974100D7282E /* MungMEmo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MungMEmo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B184BDEA23A4974100D7282E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B184BDEC23A4974100D7282E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B184BDEE23A4974100D7282E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B184BDF123A4974100D7282E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B184BDF423A4974100D7282E /* MungMEmo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MungMEmo.xcdatamodel; sourceTree = "<group>"; };
 		B184BDF623A4974200D7282E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B184BDF923A4974200D7282E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B184BDFB23A4974200D7282E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B184BE0223A4B73500D7282E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +58,9 @@
 		B184BDE923A4974100D7282E /* MungMEmo */ = {
 			isa = PBXGroup;
 			children = (
+				B184BE0123A4B70C00D7282E /* Model */,
 				B184BDEA23A4974100D7282E /* AppDelegate.swift */,
 				B184BDEC23A4974100D7282E /* SceneDelegate.swift */,
-				B184BDEE23A4974100D7282E /* ViewController.swift */,
 				B184BDF023A4974100D7282E /* Main.storyboard */,
 				B184BDF623A4974200D7282E /* Assets.xcassets */,
 				B184BDF823A4974200D7282E /* LaunchScreen.storyboard */,
@@ -68,6 +68,14 @@
 				B184BDF323A4974100D7282E /* MungMEmo.xcdatamodeld */,
 			);
 			path = MungMEmo;
+			sourceTree = "<group>";
+		};
+		B184BE0123A4B70C00D7282E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B184BE0223A4B73500D7282E /* Model.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,10 +149,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B184BDEF23A4974100D7282E /* ViewController.swift in Sources */,
 				B184BDEB23A4974100D7282E /* AppDelegate.swift in Sources */,
 				B184BDF523A4974100D7282E /* MungMEmo.xcdatamodeld in Sources */,
 				B184BDED23A4974100D7282E /* SceneDelegate.swift in Sources */,
+				B184BE0323A4B73500D7282E /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
