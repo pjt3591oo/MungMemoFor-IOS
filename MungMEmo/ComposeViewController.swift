@@ -16,7 +16,11 @@ class ComposeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func close(_ sender: Any) {
+        print("hello world")
+        dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
