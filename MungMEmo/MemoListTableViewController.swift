@@ -18,9 +18,30 @@ class MemoListTableViewController: UITableViewController {
         return f
     }()
     
+    // table view에게 목록을 업데이트 하라고 알려줄 수 있음
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        tableView.reloadData() // data source가 전달해주는 최신 데이터로 업데이트 함
+//        print(#function)
+    }
+    
+    var token: NSObjectProtocol? // addObserver에서 반환하는 옵저버 객체
+    
+    deinit {
+        if let token = token {
+            NotificationCenter.default.removeObserver(token)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // forName로 전달한 객체를 관찰후 noti가 발생하면 호출
+        // queue는 옵저버를 어느 쓰레드에서 실행할 지 OperationQueue.main은 main쓰레드에서 실행하라는 의미
+        token = NotificationCenter.default.addObserver(forName: ComposeViewController.newMemoDidInsert, object: nil, queue: OperationQueue.main) { [weak self] (noti) in self?.tableView.reloadData()
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
