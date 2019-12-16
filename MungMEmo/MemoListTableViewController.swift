@@ -34,6 +34,15 @@ class MemoListTableViewController: UITableViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print(#function)
+        if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
+            if let vc = segue.destination as? DetailViewController {
+                vc.memo = Memo.dumyMemoList[indexPath.row]
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -67,7 +76,6 @@ class MemoListTableViewController: UITableViewController {
         cell.detailTextLabel?.text = formatter.string(from: target.insertDate)
         return cell
     }
-    
 
     /*
     // Override to support conditional editing of the table view.
