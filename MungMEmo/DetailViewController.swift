@@ -37,7 +37,14 @@ class DetailViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    //해당 화면이 뜨기전에 ComposeViewController의 editTarget에 memo를 전달함
+    @IBAction func share(_ sender: Any) {
+        guard let memo = memo?.content else { return }
+        let vc = UIActivityViewController(activityItems: [memo], applicationActivities: nil)
+        
+        present(vc, animated: true, completion: nil)
+    }
+    
+    //해당 화면이 뜨기전에 ComposeViewController의 editTarget속성에 memo를 전달함
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination.children.first as? ComposeViewController {
             vc.editTarget = memo

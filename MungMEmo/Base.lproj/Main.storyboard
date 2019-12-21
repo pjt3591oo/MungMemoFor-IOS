@@ -85,6 +85,12 @@
                                             <segue destination="4qi-ea-O0q" kind="presentation" id="zlq-a7-vk8"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="PHj-PA-KtV"/>
+                                    <barButtonItem systemItem="action" id="qKG-jb-o6N">
+                                        <connections>
+                                            <action selector="share:" destination="uOL-wF-0io" id="r92-KR-TpH"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Iby-0k-Ztt">
@@ -235,6 +241,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zlq-a7-vk8"/>
+        <segue reference="aCn-k6-Sgx"/>
     </inferredMetricsTieBreakers>
 </document>
