@@ -17,11 +17,12 @@ class DataManager {
         
     }
     
-    var mainContenxt:NSManagedObjectContext {
+    var mainContext:NSManagedObjectContext {
         return persistentContainer.viewContext
     }
     
     // 메모를 데이터베이스에서 읽어오는 배열
+    // entity 이름을 타입으로 이용가능
     var memoList = [Memo]()
     
     // 데이터베이스에서 데이터를 읽어오는 메소드
@@ -34,11 +35,22 @@ class DataManager {
         request.sortDescriptors = [sortByDateDesc]
         
         do {
-            memoList = try mainContenxt.fetch(request)
+            memoList = try mainContext.fetch(request)
         } catch {
             print(error)
         }
         
+    }
+    
+    // 데이터베이스에 데이터를 추가하는 메소드
+    func addNewMemo(_ memo: String?){
+        let newMemo = Memo(context: mainContext)
+        newMemo.content = memo
+        newMemo.insertDate = Date()
+        
+        memoList.insert(newMemo, at: 0)
+        
+        saveContext()
     }
     
     // MARK: - Core Data stack

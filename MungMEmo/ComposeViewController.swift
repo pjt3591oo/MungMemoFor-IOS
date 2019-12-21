@@ -31,7 +31,7 @@ class ComposeViewController: UIViewController {
         
 //        let newMemo = Memo(content: memo)
 //        Memo.dumyMemoList.append(newMemo)
-        
+        DataManager.shared.addNewMemo(memo)
         // 해당 노티는 옵저버를 통해 받을 수 있음
         NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)
         
