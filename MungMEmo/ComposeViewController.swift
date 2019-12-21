@@ -10,14 +10,45 @@ import UIKit
 
 class ComposeViewController: UIViewController {
 
+    // ComposeViewController가 글쓰기로 들어오면 해당 속성은 nil이 됨
+    // 글보기(DetailViewController)에서 글수정 버튼을 통해 들어오면 prepare에서 해당 속성으로 데이터를 전달하기 때문에 nil이 아님
+    // 2가지 상황에 따라 동적으로 모드를 나눌 수 있음
+    var editTarget: Memo?
+    
+    // 편집 이전의 메모내용 저장
+    var originalMemoContent: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if let memo = editTarget {
+            navigationItem.title = "메모 편집"
+            memoTextView.text = memo.content
+            
+            originalMemoContent = memo.content
+        } else {
+            navigationItem.title = "새 메모"
+            memoTextView.text = ""
+        }
+        
+        memoTextView.delegate = self
+    }
+    
+    // 편집화면이 설정되기 직전
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.presentationController?.delegate = self
+        print(#function)
+    }
+    
+    // 편집화면이 해제되기 직전
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.presentationController?.delegate = nil
+        print(#function)
     }
     
     @IBAction func close(_ sender: Any) {
-        print("hello world")
         dismiss(animated: true, completion: nil)
     }
     
@@ -29,11 +60,15 @@ class ComposeViewController: UIViewController {
             return
         }
         
-//        let newMemo = Memo(content: memo)
-//        Memo.dumyMemoList.append(newMemo)
-        DataManager.shared.addNewMemo(memo)
-        // 해당 노티는 옵저버를 통해 받을 수 있음
-        NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)
+        // 모드에 따라
+        if let target = editTarget {
+            target.content = memo
+            DataManager.shared.saveContext()
+            NotificationCenter.default.post(name: ComposeViewController.memoDidChange, object: nil)
+        } else {
+            DataManager.shared.addNewMemo(memo)
+            NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)
+        }
         
         dismiss(animated: true, completion: nil)
     }
@@ -49,6 +84,40 @@ class ComposeViewController: UIViewController {
 
 }
 
+extension ComposeViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        if let original = originalMemoContent, let edited = textView.text {
+    
+            if #available(iOS 13.0, *) {
+                isModalInPresentation = original != edited
+            } else {
+                // Fallback on earlier versions
+            }
+          
+        }
+        
+    }
+}
+
+extension ComposeViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+        let alert = UIAlertController(title: "알림", message: "편집한 내용을 저장할까요?", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "확인", style: .default) { [weak self] (action) in
+            self?.save(action)
+        }
+        alert.addAction(okAction)
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { [weak self] (action) in
+            self?.close(action)
+        }
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+}
+
 extension ComposeViewController {
     static let newMemoDidInsert = Notification.Name(rawValue: "newMemoDidInsert")
+    static let memoDidChange = Notification.Name(rawValue: "memoDidChange")
 }
