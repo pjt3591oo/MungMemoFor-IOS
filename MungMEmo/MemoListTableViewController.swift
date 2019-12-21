@@ -19,10 +19,11 @@ class MemoListTableViewController: UITableViewController {
     }()
     
     // table view에게 목록을 업데이트 하라고 알려줄 수 있음
+    // view controller가 관리하는 view가 화면에 띄워주기 직전에 호출됨
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-//        tableView.reloadData() // data source가 전달해주는 최신 데이터로 업데이트 함
+        DataManager.shared.fetchMemo()
+        tableView.reloadData() // data source가 전달해주는 최신 데이터로 업데이트 함 => MARK - Table view data source 아래 2개 메소드 호출
 //        print(#function)
     }
     
@@ -38,7 +39,7 @@ class MemoListTableViewController: UITableViewController {
         print(#function)
         if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
             if let vc = segue.destination as? DetailViewController {
-                vc.memo = Memo.dumyMemoList[indexPath.row]
+                vc.memo = DataManager.shared.memoList[indexPath.row]
             }
         }
     }
@@ -63,7 +64,7 @@ class MemoListTableViewController: UITableViewController {
     // table view 필수 메소드
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Memo.dumyMemoList.count
+        return DataManager.shared.memoList.count
     }
 
     // table view 필수 메소드
@@ -71,9 +72,9 @@ class MemoListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
         // Configure the cell...
-        let target = Memo.dumyMemoList[indexPath.row]
+        let target = DataManager.shared.memoList[indexPath.row]
         cell.textLabel?.text = target.content
-        cell.detailTextLabel?.text = formatter.string(from: target.insertDate)
+        cell.detailTextLabel?.text = formatter.string(for: target.insertDate)
         return cell
     }
 

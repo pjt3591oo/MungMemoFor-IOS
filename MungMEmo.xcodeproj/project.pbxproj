@@ -18,6 +18,7 @@
 		B184BE0523A4B98B00D7282E /* MemoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B184BE0423A4B98B00D7282E /* MemoListTableViewController.swift */; };
 		B184BE0723A5FAB900D7282E /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B184BE0623A5FAB900D7282E /* ComposeViewController.swift */; };
 		B184BE0923A5FDCF00D7282E /* UIViewController+Alter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B184BE0823A5FDCF00D7282E /* UIViewController+Alter.swift */; };
+		B19BB38023ADB48900828E59 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BB37F23ADB48900828E59 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		B184BE0423A4B98B00D7282E /* MemoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListTableViewController.swift; sourceTree = "<group>"; };
 		B184BE0623A5FAB900D7282E /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		B184BE0823A5FDCF00D7282E /* UIViewController+Alter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alter.swift"; sourceTree = "<group>"; };
+		B19BB37F23ADB48900828E59 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 		B184BDE923A4974100D7282E /* MungMEmo */ = {
 			isa = PBXGroup;
 			children = (
+				B19BB37E23ADB47800828E59 /* Data */,
 				B184BE0123A4B70C00D7282E /* Model */,
 				B184BDEA23A4974100D7282E /* AppDelegate.swift */,
 				B184BDEC23A4974100D7282E /* SceneDelegate.swift */,
@@ -88,6 +91,14 @@
 				B184BE0223A4B73500D7282E /* Model.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B19BB37E23ADB47800828E59 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B19BB37F23ADB48900828E59 /* DataManager.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +179,7 @@
 				B184BDED23A4974100D7282E /* SceneDelegate.swift in Sources */,
 				B184BE0923A5FDCF00D7282E /* UIViewController+Alter.swift in Sources */,
 				B184BE0323A4B73500D7282E /* Model.swift in Sources */,
+				B19BB38023ADB48900828E59 /* DataManager.swift in Sources */,
 				B139E2C923A78271000F03C9 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
